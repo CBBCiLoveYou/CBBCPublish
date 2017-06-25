@@ -9,7 +9,7 @@ $(document).ready(function() {
 
 
     $('#main').click(function() {
-        window.location.href = "../CBBC/index.html";
+        window.location.href = "../CBBCPublish/index.html";
     });
 
     function synProperty()

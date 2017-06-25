@@ -66,7 +66,7 @@ $(document).ready(function() {
              'article' : article,
              'url' : url
          });
-         window.location.href = '../CBBC/success.html';
+         window.location.href = '../CBBCPublish/success.html';
      }
 
      function uploadImageToFirebase(article) {

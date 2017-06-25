@@ -3,7 +3,7 @@ $(document).ready(function() {
 
     setTimeout(function() {
         console.log('time up');
-        window.location.href = "../CBBC/index.html"
+        window.location.href = "../CBBCPublish/index.html"
     }, 5000);
 
 

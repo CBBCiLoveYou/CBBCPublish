@@ -81,7 +81,7 @@ $(document).ready(function() {
 
     function logout() {
         FB.logout(function(response) {
-            window.location.href = "../CBBC/manage.html";
+            window.location.href = "../CBBCPublish/manage.html";
         });
     }
 
