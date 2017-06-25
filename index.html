@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/index.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+
+  </head>
+  <body>
+      <div class="container">
+          <div class="row">
+              <div class="col-xs-12 col-sm-12">
+                  <div class="header">
+                      <h1>靠北北科</h1>
+                      <p>CBBC</p>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-xs-12 col-sm-12">
+                  <div class="content">
+                      <p>發文內容</p>
+                  </div>
+              </div>
+
+              <div class="col-xs-12 col-sm-12">
+                  <div class="message">
+                      <p>文章長度不夠，要大於五個字！</p>
+                  </div>
+              </div>
+
+              <div class="col-xs-12 col-sm-12">
+                  <div class="text-area">
+                      <textarea id="article" rows="3" name="Text" Id="Text" value=""> </textarea>
+                  </div>
+              </div>
+
+              <div class="col-xs-12 col-sm-12">
+                  <div class="photo-area">
+                      <div class="file-update">
+                       <label class="custom-file-upload">
+                           <input id="file" type="file"/>
+                           <span>附加圖片 </span><span id="upload-span">按此上傳圖片</span>
+                       </label>
+                    </div>
+                  </div>
+              </div>
+
+              <div class="col-xs-12 col-sm-12">
+                  <div class="upload-content">
+                      <img id="upload-img" src="">
+                      <div id="img-loading"></div>
+                  </div>
+              </div>
+
+
+              <div class="col-xs-12 col-sm-12">
+                  <div class="button-area">
+                      <button class="publish-btn" name="button">匿名投稿</button>
+                      <div id="loading"></div>
+                  </div>
+              </div>
+              <div class="col-xs-12 col-sm-12">
+                  <div class="declaration">
+                      <p id="declaration">免責聲明：本網站是以實時上傳發文的方式運作，本站對所有發文的真實性、完整性及立場等，不負任何法律責任。而一切發文內容只代表發文者個人意見，並非本網站之立場，用戶不應信賴內容，並應自行判斷內容之真實性。發文者擁有在本站張貼的發文。由於本站是受到「實時發表」運作方式所規限，故不能完全監查所有即時發文，若讀者發現有留言出現問題，請聯絡我們。本站有權刪除任何內容及拒絕任何人士發文，同時亦有不刪除發文的權力。切勿撰寫粗言穢語、毀謗、渲染色情暴力或人身攻擊的言論，敬請自律。本網站保留一切法律權利。</p>
+                  </div>
+              </div>
+
+              <div class="col-xs-12 col-sm-12">
+                  <div class="nav">
+                      <span id="top-10">Top-10</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+
+
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <script src="./js/index.js"></script>
+      <script src="./js/cbbc.js"></script>
+
+  </body>
+</html>
