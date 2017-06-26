@@ -53,16 +53,27 @@ $(document).ready(function() {
             var key = snap.key;
             var article = snap.val().article;
             var url = snap.val().url;
+            if (!url) {
+                console.log('not url');
+                url = "http://img.kpopmap.com/wp-content/uploads_kpopmap/2017/06/GD-Announced-Name-Of-Title-Song-Bullshit_-1.jpg";
+            }
+
             var postTemplate = $('#post-template').html();
             var item = {
                 article : article,
-                key : key
+                key : key,
+                img_url : url
             }
+
             // need to look up the problem of \n
             $('#unPost').append(Mustache.render(postTemplate, item));
             postArray.push(key);
         });
     }
+
+
+
+
 
     $('#all-post').click(function() {
         postAllByKey();
@@ -114,21 +125,16 @@ $(document).ready(function() {
              // 因為每次改變都會trigger
              var article = snap.val().article;
              var link = snap.val().url;
-             console.log(snap.val());
-
              var wallPost = {
                  message : article,
                  link : link
              };
-
-             console.log('fb posting!');
              var path = page_id[page_index] + "/feed?access_token=" + page_access_token[page_index];
              FB.api(path, "POST", wallPost , function(response) {
                 if (!response || response.error) {
                   //alert('Error occured');
                    console.log(response.error);
                 } else {
-                   console.log(response);
                    console.log('Post ID: ' + response);
                 }
                 deleteFirebaseByKey(snap.key);
@@ -139,10 +145,30 @@ $(document).ready(function() {
 
      function deleteFirebaseByKey(key) {
          console.log('delete....:' + key);
+         database.ref('unPost/' + key).once('value', function(snap) {
+            var image_name = snap.val().image_name;
+            console.log(image_name);
+            if (image_name != '')
+            {
+                var storageRef = firebase.storage().ref();
+                var desertRef = storageRef.child("images/" + image_name);
+                // Delete the file
+                desertRef.delete().then(function() {
+                  // File deleted successfully
+                    console.log('delete image from firebase file storage successfully');
+                }).catch(function(error) {
+                  // Uh-oh, an error occurred!
+                    console.log(error);
+                });
+            }
+         })
+
          var task = database.ref('unPost/' + key).update({
              article : null,
-             url : null
+             url : null,
+             image_name : null
          });
+
          console.log('done!');
      }
 
@@ -176,7 +202,6 @@ $(document).ready(function() {
              $($li).find('#update-post').html('Update');
              $($li).find('.article').show();
              var modifyArticle = $($li).find('.article-textarea').val();
-             console.log(modifyArticle);
              $($li).find('.article-form').hide();
              $($li).find('.article p').text(modifyArticle);
              updateFirebaseByKey(key, modifyArticle);
@@ -187,9 +212,9 @@ $(document).ready(function() {
          }
      }
 
-     window.setInterval(function() {
-        console.log('5s');
-     }, 5000);
+    //  window.setInterval(function() {
+    //     console.log('5s');
+    //  }, 5000);
 
      var page_id = [];
      var page_index;
@@ -227,13 +252,8 @@ $(document).ready(function() {
      }
 
      $('#select-page').delegate('#select-btn', 'click', function() {
-         console.log(page_id);
-         console.log(page_access_token);
          $li = $(this).closest('li');
          page_index = $li.data("id");
-         console.log(page_id[page_index]);
-         console.log(page_access_token[page_index]);
-         console.log(page_name[page_index]);
          if (page_name[page_index] == "靠北北科")
          {
              loadAllPost();
@@ -243,5 +263,25 @@ $(document).ready(function() {
          $('#logout-content').fadeIn(200);
          $('#select-page').remove();
      });
+
+     var modal = document.getElementById('myModal');
+      // Get the image and insert it inside the modal - use its "alt" text as a caption
+      var img = document.getElementById('myImg');
+      var modalImg = document.getElementById("img01");
+      var captionText = document.getElementById("caption");
+      $('body').on('click','img',function(){
+            modal.style.display = "block";
+            modalImg.src = this.src;
+      });
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+          modal.style.display = "none";
+      }
+
+
+
 
 });

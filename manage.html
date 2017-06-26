@@ -9,7 +9,7 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/admin1.css">
+    <link rel="stylesheet" href="./css/admin.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -46,7 +46,7 @@
                         <div class="col-md-2">
                             <div class="image-content outer">
                                 <div class="middle">
-                                    <img src="https://s-media-cache-ak0.pinimg.com/736x/d5/59/8a/d5598ad581ef4282f8f8276781bea001.jpg">
+                                    <img id="myImg" src={{img_url}}>
                                 </div>
                             </div>
                         </div>
@@ -99,6 +99,22 @@
                 </li>
             </script>
         </ul>
+
+
+
+
+
+        <div id="myModal" class="modal">
+            <!-- The Close Button -->
+            <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+
     </div>
 
     <!-- <button id="logout">logout</button> -->
@@ -107,6 +123,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="./js/manage1.js"></script>
+    <script src="./js/manage.js"></script>
 </body>
 </html>

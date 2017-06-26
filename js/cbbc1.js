@@ -61,10 +61,11 @@ $(document).ready(function() {
      });
 
 
-     function writePostToFirebase(article, url) {
+     function writePostToFirebase(article, url, image_name) {
          database.ref('unPost').push({
              'article' : article,
-             'url' : url
+             'url' : url,
+             'image_name' : image_name
          });
          window.location.href = '../CBBCPublish/success.html';
      }
@@ -77,7 +78,7 @@ $(document).ready(function() {
          var storageRef = firebase.storage().ref();
          var task = storageRef.child('images/' + image.name).put(image, metadata);
          task.then(function(snapshot) {
-             writePostToFirebase(article, snapshot.metadata.downloadURLs[0])
+             writePostToFirebase(article, snapshot.metadata.downloadURLs[0], image.name);
          });
      }
 
@@ -102,7 +103,7 @@ $(document).ready(function() {
             uploadImageToFirebase(article);
         } else {
             if (!image) {
-                writePostToFirebase(article, '');
+                writePostToFirebase(article, '', '');
             }
         }
     }
