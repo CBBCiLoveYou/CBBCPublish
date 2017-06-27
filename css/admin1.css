@@ -87,10 +87,9 @@ span, #page-btn {
 
 .article-textarea {
     width: 100%;
-    height: 100%;
+    height: 130px;
     border-radius: 5px;
     border: 1px solid gray;
-    padding: 10px;
 }
 
 .outer {

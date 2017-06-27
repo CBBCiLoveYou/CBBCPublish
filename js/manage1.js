@@ -53,16 +53,19 @@ $(document).ready(function() {
             var key = snap.key;
             var article = snap.val().article;
             var url = snap.val().url;
+            var image_name = snap.val().image_name;
             if (!url) {
                 console.log('not url');
                 url = "http://img.kpopmap.com/wp-content/uploads_kpopmap/2017/06/GD-Announced-Name-Of-Title-Song-Bullshit_-1.jpg";
+                image_name = "G-Dragon";
             }
 
             var postTemplate = $('#post-template').html();
             var item = {
                 article : article,
                 key : key,
-                img_url : url
+                img_url : url,
+                image_name : image_name
             }
 
             // need to look up the problem of \n
@@ -223,6 +226,7 @@ $(document).ready(function() {
 
      $('#login').click(function() {
           $(this).remove();
+          $('#wrapper').remove();
           // select page
           login();
           // select page
@@ -264,14 +268,16 @@ $(document).ready(function() {
          $('#select-page').remove();
      });
 
-     var modal = document.getElementById('myModal');
+      var modal = document.getElementById('myModal');
       // Get the image and insert it inside the modal - use its "alt" text as a caption
       var img = document.getElementById('myImg');
       var modalImg = document.getElementById("img01");
       var captionText = document.getElementById("caption");
+
       $('body').on('click','img',function(){
             modal.style.display = "block";
             modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
       });
       // Get the <span> element that closes the modal
       var span = document.getElementsByClassName("close")[0];
@@ -290,10 +296,10 @@ $(document).ready(function() {
             // Insert url into an <img> tag to "download"
               console.log('download url: ' + url);
               var xhr = new XMLHttpRequest();
-              // xhr.responseType = 'blob';
-              // xhr.onload = function(event) {
-              //   var blob = xhr.response;
-              // };
+              xhr.responseType = 'blob';
+              xhr.onload = function(event) {
+                var blob = xhr.response;
+              };
               xhr.open('GET', url);
               xhr.send();
 
