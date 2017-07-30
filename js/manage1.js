@@ -74,10 +74,6 @@ $(document).ready(function() {
         });
     }
 
-
-
-
-
     $('#all-post').click(function() {
         postAllByKey();
     });
@@ -148,31 +144,11 @@ $(document).ready(function() {
 
      function deleteFirebaseByKey(key) {
          console.log('delete....:' + key);
-         database.ref('unPost/' + key).once('value', function(snap) {
-            var image_name = snap.val().image_name;
-            console.log(image_name);
-            if (image_name != '')
-            {
-                var storageRef = firebase.storage().ref();
-                var desertRef = storageRef.child("images/" + image_name);
-                // Delete the file
-                desertRef.delete().then(function() {
-                  // File deleted successfully
-                    console.log('delete image from firebase file storage successfully');
-                }).catch(function(error) {
-                  // Uh-oh, an error occurred!
-                    console.log(error);
-                });
-            }
-         })
-
          var task = database.ref('unPost/' + key).update({
              article : null,
              url : null,
              image_name : null
          });
-
-         console.log('done!');
      }
 
 
@@ -193,6 +169,7 @@ $(document).ready(function() {
 
      function updateFirebaseByKey(key, article) {
          console.log('updating....');
+         console.log(article);
          var task = database.ref('unPost/' + key).update({
              article : article
          });
@@ -273,7 +250,6 @@ $(document).ready(function() {
       var img = document.getElementById('myImg');
       var modalImg = document.getElementById("img01");
       var captionText = document.getElementById("caption");
-
       $('body').on('click','img',function(){
             modal.style.display = "block";
             modalImg.src = this.src;
@@ -281,7 +257,6 @@ $(document).ready(function() {
       });
       // Get the <span> element that closes the modal
       var span = document.getElementsByClassName("close")[0];
-
       // When the user clicks on <span> (x), close the modal
       span.onclick = function() {
           modal.style.display = "none";
