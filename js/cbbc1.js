@@ -38,12 +38,10 @@ $(document).ready(function() {
             console.log('read');
             var reader = new FileReader();
             reader.onload = function (e) {
-                $('#upload-img').attr('src', e.target.result)
-
+                $('#upload-img').attr('src', e.target.result);
             }
             reader.readAsDataURL(input.files[0]);
         }
-
         $('#img-loading').hide();
     }
 
@@ -107,6 +105,4 @@ $(document).ready(function() {
             }
         }
     }
-
-
 });
